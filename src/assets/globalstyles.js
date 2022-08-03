@@ -49,4 +49,9 @@ export default createGlobalStyle`
         border-collapse: collapse;
         border-spacing: 0;
     }
+    //Personal styles
+    body {
+        max-width: 667px;
+        background-color: #FFFFFF;
+    }
 `;
