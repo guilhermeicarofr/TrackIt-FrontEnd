@@ -54,4 +54,8 @@ export default createGlobalStyle`
         max-width: 667px;
         background-color: #FFFFFF;
     }
+    * {
+        box-sizing: border-box;
+        font-family: 'Lexend Deca', sans-serif;
+    }
 `;

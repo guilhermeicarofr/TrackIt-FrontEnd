@@ -1,17 +1,36 @@
-import { signUp, signIn } from './../services/trackit';
+import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import UserContext from './../contexts/UserContext';
+import { signIn } from './../services/trackit';
+
+import UserForm from './UserForm'
+import logo from './../assets/images/logo.png';
 
 export default function LogIn() {
 
+    const [loginform, setLoginform] = useState({email:'', password:''});
+    const { userinfo, setUserinfo } = useContext(UserContext);
+
+    const navigate = useNavigate();
+
+    console.log(userinfo);
+
+    function handleForm(event) {
+        event.preventDefault();
+        signIn(loginform).then((res)=>setUserinfo(res.data));
+        signIn(loginform).catch(()=>alert('Falha no login!'));
+    }
+
     return (
-        <>
-            <button onClick={()=>signUp({ email: "guilhermeicarofr@gmail.com", name: "Guilherme Icaro", image: "http://pm1.narvii.com/7580/f5798ec3827975889f030fd8fa4b6e7784ca6d2br1-720-506v2_uhq.jpg", password: "GuiIcaro2014"})}>
-                SIGN ME UP
-            </button>
-            <button onClick={()=>{ 
-                signIn({email: "guilhermeicarofr@gmail.com", password: "GuiIcaro2014"}).then((res)=>console.log(res));
-            }}>
-                LOG IN
-            </button>
-        </>
+        <UserForm>
+            <img src={logo} alt='' />
+            <form onSubmit={handleForm}>
+                <input onChange={(event)=>setLoginform({...loginform, email: event.target.value})} value={loginform.email} placeholder='email' type='email'/>
+                <input onChange={(event)=>setLoginform({...loginform, password: event.target.value})} value={loginform.password} placeholder='senha' type='password'/>
+                <button>Entrar</button>
+            </form>
+            <h3 onClick={()=>navigate('/cadastro')}>Não tem uma conta? Cadastre-se!</h3>
+        </UserForm>
     );
 }
