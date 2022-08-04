@@ -1,7 +1,7 @@
+import { useState } from 'react';
 import axios from 'axios';
 
 const BASE_URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit';
-let USER_TOKEN = '';
 
 function signUp(body) {
     const promise = axios.post(`${BASE_URL}/auth/sign-up`, body);
@@ -12,34 +12,34 @@ function signIn(body) {
     return promise;
 }
 
-function createNewHabit(body) {
-    const promise = axios.post(`${BASE_URL}/habits`, body, {Authorization: `Bearer ${USER_TOKEN}`});
+function createNewHabit(body, user_token) {
+    const promise = axios.post(`${BASE_URL}/habits`, body, {Authorization: `Bearer ${user_token}`});
     return promise;
 }
-function deleteHabit(id) {
-    const promise = axios.delete(`${BASE_URL}/habits/${id}`, {Authorization: `Bearer ${USER_TOKEN}`});
-    return promise;
-}
-
-function getHabitsList() {
-    const promise = axios.get(`${BASE_URL}/habits`, {Authorization: `Bearer ${USER_TOKEN}`});
-    return promise;
-}
-function getTodayHabitsList() {
-    const promise = axios.get(`${BASE_URL}/habits/today`, {Authorization: `Bearer ${USER_TOKEN}`});
+function deleteHabit(id, user_token) {
+    const promise = axios.delete(`${BASE_URL}/habits/${id}`, {Authorization: `Bearer ${user_token}`});
     return promise;
 }
 
-function checkHabitToday(id) {
-    const promise = axios.post(`${BASE_URL}/habits/${id}/check`, {Authorization: `Bearer ${USER_TOKEN}`});
+function getHabitsList(user_token) {
+    const promise = axios.get(`${BASE_URL}/habits`, {Authorization: `Bearer ${user_token}`});
     return promise;
 }
-function uncheckHabitToday(id) {
-    const promise = axios.post(`${BASE_URL}/habits/${id}/uncheck`, {Authorization: `Bearer ${USER_TOKEN}`});
+function getTodayHabitsList(user_token) {
+    const promise = axios.get(`${BASE_URL}/habits/today`, {Authorization: `Bearer ${user_token}`});
     return promise;
 }
-function getHabitsHistory() {
-    const promise = axios.get(`${BASE_URL}/habits/today`, {Authorization: `Bearer ${USER_TOKEN}`});
+
+function checkHabitToday(id, user_token) {
+    const promise = axios.post(`${BASE_URL}/habits/${id}/check`, {Authorization: `Bearer ${user_token}`});
+    return promise;
+}
+function uncheckHabitToday(id, user_token) {
+    const promise = axios.post(`${BASE_URL}/habits/${id}/uncheck`, {Authorization: `Bearer ${user_token}`});
+    return promise;
+}
+function getHabitsHistory(user_token) {
+    const promise = axios.get(`${BASE_URL}/habits/today`, {Authorization: `Bearer ${user_token}`});
     return promise;
 }
 

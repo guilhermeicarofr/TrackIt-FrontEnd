@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
+import logo from './../assets/images/logo.png';
+
 export default function UserForm ({children}) {
     return (
         <UserFormContainer>
+            <img src={logo} alt='' />
             {children}
         </UserFormContainer>
     );

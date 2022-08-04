@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { signUp } from '../services/trackit';
 
 import UserForm from './UserForm'
-import logo from './../assets/images/logo.png';
 
 export default function SignIn() {
 
@@ -20,7 +19,6 @@ export default function SignIn() {
 
     return (
         <UserForm>
-            <img src={logo} alt='' />
             <form onSubmit={handleForm}>
                 <input onChange={(event)=>setSignupform({...signupform, email: event.target.value})} value={signupform.email} placeholder='email' type='email' required/>
                 <input onChange={(event)=>setSignupform({...signupform, password: event.target.value})} value={signupform.password} placeholder='senha' type='password' required/>

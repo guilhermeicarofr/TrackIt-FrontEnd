@@ -5,7 +5,6 @@ import UserContext from './../contexts/UserContext';
 import { signIn } from './../services/trackit';
 
 import UserForm from './UserForm'
-import logo from './../assets/images/logo.png';
 
 export default function LogIn() {
 
@@ -14,17 +13,14 @@ export default function LogIn() {
 
     const navigate = useNavigate();
 
-    console.log(userinfo);
-
     function handleForm(event) {
         event.preventDefault();
-        signIn(loginform).then((res)=>setUserinfo(res.data));
+        signIn(loginform).then((res) => {setUserinfo(res.data);});
         signIn(loginform).catch((error)=>alert(`Falha no Login! ${error.response.data.message}`));
     }
 
     return (
         <UserForm>
-            <img src={logo} alt='' />
             <form onSubmit={handleForm}>
                 <input onChange={(event)=>setLoginform({...loginform, email: event.target.value})} value={loginform.email} placeholder='email' type='email' required/>
                 <input onChange={(event)=>setLoginform({...loginform, password: event.target.value})} value={loginform.password} placeholder='senha' type='password' required/>
