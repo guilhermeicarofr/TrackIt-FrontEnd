@@ -19,15 +19,15 @@ export default function LogIn() {
     function handleForm(event) {
         event.preventDefault();
         signIn(loginform).then((res)=>setUserinfo(res.data));
-        signIn(loginform).catch(()=>alert('Falha no login!'));
+        signIn(loginform).catch((error)=>alert(`Falha no Login! ${error.response.data.message}`));
     }
 
     return (
         <UserForm>
             <img src={logo} alt='' />
             <form onSubmit={handleForm}>
-                <input onChange={(event)=>setLoginform({...loginform, email: event.target.value})} value={loginform.email} placeholder='email' type='email'/>
-                <input onChange={(event)=>setLoginform({...loginform, password: event.target.value})} value={loginform.password} placeholder='senha' type='password'/>
+                <input onChange={(event)=>setLoginform({...loginform, email: event.target.value})} value={loginform.email} placeholder='email' type='email' required/>
+                <input onChange={(event)=>setLoginform({...loginform, password: event.target.value})} value={loginform.password} placeholder='senha' type='password' required/>
                 <button>Entrar</button>
             </form>
             <h3 onClick={()=>navigate('/cadastro')}>Não tem uma conta? Cadastre-se!</h3>
