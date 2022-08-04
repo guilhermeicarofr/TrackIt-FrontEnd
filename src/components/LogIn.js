@@ -15,7 +15,10 @@ export default function LogIn() {
 
     function handleForm(event) {
         event.preventDefault();
-        signIn(loginform).then((res) => {setUserinfo(res.data);});
+        signIn(loginform).then((res) => {
+            setUserinfo(res.data);
+            navigate('/habitos');
+        });
         signIn(loginform).catch((error)=>alert(`Falha no Login! ${error.response.data.message}`));
     }
 
