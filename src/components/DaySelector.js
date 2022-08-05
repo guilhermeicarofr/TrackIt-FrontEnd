@@ -9,16 +9,16 @@ export default function DaySelector({children, day, creationinput, setCreationin
         if(creationinput.days.includes(day)) {
             setSelected(true);
         }
-    },[]);
+    },[day, creationinput]);
 
     function selectDay() {
         if(type==='create'){
             setSelected(!selected);
-        }
-        if(creationinput.days.includes(day)) {
-            setCreationinput({...creationinput, days:creationinput.days.filter((item) => (item!==day))});
-        } else {
-            setCreationinput({...creationinput, days:[...creationinput.days, day]});
+            if(creationinput.days.includes(day)) {
+                setCreationinput({...creationinput, days:creationinput.days.filter((item) => (item!==day))});
+            } else {
+                setCreationinput({...creationinput, days:[...creationinput.days, day]});
+            }
         }
     }
 

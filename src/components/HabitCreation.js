@@ -5,21 +5,18 @@ import { createNewHabit } from './../services/trackit';
 
 import DaySelector from './DaySelector';
 
-export default function HabitCreation({userinfo, showcreation, setShowcreation}) {
+export default function HabitCreation({userinfo, showcreation, setShowcreation, loadlist, setLoadlist}) {
     
     const [creationinput, setCreationinput] = useState({name:'', days:[]})
-
-    console.log(creationinput);
 
     function handleForm(event) {
         event.preventDefault();
         if(creationinput.days.length>0) {
-            createNewHabit(creationinput, userinfo.token).then((res)=>{
-                console.log(res.data)
+            createNewHabit(creationinput, userinfo.token).then(()=>{
                 setCreationinput({name:'', days:[]});
+                setLoadlist(!loadlist);
                 setShowcreation(false);
             })
-            .catch((res)=>console.log(res));
         } else {
             alert('Você deve selecionar um dia!');
         }

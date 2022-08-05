@@ -1,8 +1,16 @@
 import styled from 'styled-components';
+import { deleteHabit } from '../services/trackit';
 
 import DaySelector from './DaySelector';
 
-export default function HabitListItem({habit}) {
+export default function HabitListItem({habit, userinfo, loadlist, setLoadlist}) {
+
+    function removeItem() {
+        if(window.confirm('Excluir esse hábito?') === true) {
+            deleteHabit(habit.id,userinfo.token).then(()=>setLoadlist(!loadlist));
+        }
+    }
+
     return (
         <HabitListItemContainer>
             <h2>{habit.name}</h2>
@@ -15,6 +23,7 @@ export default function HabitListItem({habit}) {
                 <DaySelector type='show' day={5} creationinput={habit} setCreationinput={()=>console.log('')}>S</DaySelector>
                 <DaySelector type='show' day={6} creationinput={habit} setCreationinput={()=>console.log('')}>S</DaySelector>
             </div>
+            <ion-icon onClick={removeItem} name='trash-outline'></ion-icon>
         </HabitListItemContainer>
     );
 }
@@ -26,12 +35,25 @@ const HabitListItemContainer = styled.div`
     border: 1px solid #FFFFFF;
     border-radius: 5px;
     padding: 16px;
+    padding-right: 30px;
     margin-bottom: 10px;
+    font-size: 20px;
+    color: #666666;
+    text-align: justify;
+    word-break: keep-all;
+    position: relative;
     div {
         width: 234px;
         height: 30px;
         margin-top: 8px;
         display: flex;
         justify-content: space-between;
+    }
+    ion-icon {
+        width: 13px;
+        height: 15px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
     }
 `;

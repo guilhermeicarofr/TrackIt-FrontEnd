@@ -10,13 +10,14 @@ export default function Habits() {
     const { userinfo } = useContext(UserContext);
 
     const [showcreation, setShowcreation] = useState(false);
+    const [loadlist, setLoadlist] = useState(true);
 
     return (
         <HabitsContainer>
             <h1>Meus Hábitos</h1>
             <button onClick={()=>setShowcreation(!showcreation)}>+</button>
-            <HabitCreation userinfo={userinfo} showcreation={showcreation} setShowcreation={setShowcreation} />
-            <HabitsList showcreation={showcreation} userinfo={userinfo} />
+            <HabitCreation userinfo={userinfo} showcreation={showcreation} setShowcreation={setShowcreation} loadlist={loadlist} setLoadlist={setLoadlist} />
+            <HabitsList userinfo={userinfo} loadlist={loadlist} setLoadlist={setLoadlist} />
         </HabitsContainer>
     );
 }

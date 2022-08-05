@@ -1,24 +1,23 @@
 import { useState, useEffect } from 'react';
 
-import { getHabitsList, deleteHabit } from './../services/trackit';
+import { getHabitsList } from './../services/trackit';
 
 import HabitListItem from './HabitListItem.js';
 
-export default function HabitsList({userinfo, showcreation}) {
+export default function HabitsList({userinfo, loadlist, setLoadlist}) {
  
     const [habits, setHabits] = useState([]);
 
     useEffect(() => {
         getHabitsList(userinfo.token).then(((res) => {
-            setHabits(res.data)
-            console.log(res);
+            setHabits(res.data);
         }));
-    },[userinfo, showcreation])
+    },[userinfo, loadlist])
 
     if(habits.length>0) {
         return (
             <>
-                {habits.map((habit, index) => <HabitListItem key={index} habit={habit} />)}
+                {habits.map((habit, index) => <HabitListItem key={index} habit={habit} userinfo={userinfo} loadlist={loadlist} setLoadlist={setLoadlist} />)}
             </>
         );
     } else {
@@ -28,5 +27,4 @@ export default function HabitsList({userinfo, showcreation}) {
             </p>
         );
     }
-
 }
