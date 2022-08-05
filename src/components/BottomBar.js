@@ -1,17 +1,22 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default function BottomBar() {
 
     const navigate = useNavigate();
+    let location = useLocation().pathname;
 
-    return (
-        <BottomBarContainer>
-            <h3 onClick={()=>navigate('/habitos')}>Hábitos</h3>
-            <h2 onClick={()=>navigate('/hoje')}>Hoje</h2> {/* <ProgressBaaar> */}
-            <h3 onClick={()=>navigate('/historico')}>Histórico</h3>
-        </BottomBarContainer>
-    );
+    if(location==='/' || location==='/cadastro') {
+        return '';
+    } else {
+        return (
+            <BottomBarContainer>
+                <h3 onClick={()=>navigate('/habitos')}>Hábitos</h3>
+                <h2 onClick={()=>navigate('/hoje')}>Hoje</h2> {/* <ProgressBaaar> */}
+                <h3 onClick={()=>navigate('/historico')}>Histórico</h3>
+            </BottomBarContainer>
+        );
+    }   
 }
 
 const BottomBarContainer = styled.div`

@@ -11,8 +11,6 @@ export default function TopBar() {
 
     let location = useLocation().pathname;
 
-    console.log(location);
-
     if(location==='/' || location==='/cadastro') {
         return '';
     } else {
