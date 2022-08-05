@@ -13,8 +13,8 @@ export default function SignIn() {
 
     function handleForm(event) {
         event.preventDefault();
-        signUp(signupform).then(()=>(navigate('/')));
-        signUp(signupform).catch((error)=>alert(`Falha no Login! ${error.response.data.message}`));
+        signUp(signupform).then(()=>(navigate('/')))
+        .catch((error)=>alert(`Falha no Login! ${error.response.data.message}`));
     }
 
     return (

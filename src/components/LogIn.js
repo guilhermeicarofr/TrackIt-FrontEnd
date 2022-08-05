@@ -18,8 +18,8 @@ export default function LogIn() {
         signIn(loginform).then((res) => {
             setUserinfo(res.data);
             navigate('/habitos');
-        });
-        signIn(loginform).catch((error)=>alert(`Falha no Login! ${error.response.data.message}`));
+        })
+        .catch((error)=>alert(`Falha no Login! ${error.response.data.message}`));
     }
 
     return (
