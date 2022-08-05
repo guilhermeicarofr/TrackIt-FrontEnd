@@ -1,15 +1,15 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import UserContext from './../contexts/UserContext';
-import { signIn } from './../services/trackit';
+import UserContext from '../../contexts/UserContext';
+import { signIn } from '../../services/trackit';
 
 import UserForm from './UserForm'
 
 export default function LogIn() {
 
     const [loginform, setLoginform] = useState({email:'', password:''});
-    const { userinfo, setUserinfo } = useContext(UserContext);
+    const { setUserinfo } = useContext(UserContext);
 
     const navigate = useNavigate();
 

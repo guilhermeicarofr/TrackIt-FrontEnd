@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { getHabitsList } from './../services/trackit';
+import { getHabitsList } from '../../services/trackit';
 
 import HabitListItem from './HabitListItem.js';
 

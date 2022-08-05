@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { signUp } from '../services/trackit';
+import { signUp } from '../../services/trackit';
 
 import UserForm from './UserForm'
 

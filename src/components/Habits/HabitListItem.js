@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { deleteHabit } from '../services/trackit';
+import { deleteHabit } from '../../services/trackit';
 
 import DaySelector from './DaySelector';
 
@@ -33,9 +33,11 @@ const HabitListItemContainer = styled.div`
     height: 91px;
     background-color: #FFFFFF;
     border: 1px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
     border-radius: 5px;
     padding: 16px;
     padding-right: 30px;
+    margin: 0px auto;
     margin-bottom: 10px;
     font-size: 20px;
     color: #666666;

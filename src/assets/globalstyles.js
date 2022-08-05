@@ -51,7 +51,6 @@ export default createGlobalStyle`
     }
     //Personal styles
     body {
-        max-width: 667px;
         background-color: #FFFFFF;
     }
     * {

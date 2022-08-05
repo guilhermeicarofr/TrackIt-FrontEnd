@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import UserContext from './../contexts/UserContext';
+import UserContext from '../../contexts/UserContext';
 import styled from 'styled-components';
 
 import HabitsList from './HabitsList.js'
@@ -24,19 +24,27 @@ export default function Habits() {
 
 const HabitsContainer = styled.main`
     margin-top: 70px;
-    padding: 28px 17px 0px 17px;
+    padding: 80px 17px 0px 17px;
     width: 100%;
     min-height: calc(100vh - 70px);
     background-color: #F2F2F2;
     position: relative;
     h1 {
+        width: 100%;
+        height: 77px;
+        display: flex;
+        align-items: center;
         font-size: 23px;
         color: #126BA5;
-        margin-bottom: 22px;
+        padding-top: 1px;
+        position: fixed;
+        top: 70px;
+        background-color: #F2F2F2;
+        z-index: 1;
     }
     > button {
-        position: absolute;
-        top: 22px;
+        position: fixed;
+        top: 92px;
         right: 17px;
         display: flex;
         align-items: center;
@@ -49,6 +57,7 @@ const HabitsContainer = styled.main`
         background-color: #52B6FF;
         font-size: 27px;
         color: #FFFFFF;
+        z-index: 2;
     }
     p {
         font-size: 18px;

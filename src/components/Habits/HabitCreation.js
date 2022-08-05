@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { createNewHabit } from './../services/trackit';
+import { createNewHabit } from '../../services/trackit';
 
 import DaySelector from './DaySelector';
 
@@ -47,12 +47,13 @@ export default function HabitCreation({userinfo, showcreation, setShowcreation, 
 const CreationForm = styled.form`
     width: 340px;
     height: 180px;
+    margin: 0px auto;
     margin-bottom: 30px;
     border: 1px solid #FFFFFF;
     border-radius: 5px;
     padding: 16px;
     background-color: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.03);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.10);
     position: relative;
     input {
         width: 303px;
