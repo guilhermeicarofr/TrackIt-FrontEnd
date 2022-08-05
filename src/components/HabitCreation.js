@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { createNewHabit } from './../services/trackit';
 
-import CreationDaySelector from './CreationDaySelector';
+import DaySelector from './DaySelector';
 
 export default function HabitCreation({userinfo, showcreation, setShowcreation}) {
     
@@ -23,10 +23,6 @@ export default function HabitCreation({userinfo, showcreation, setShowcreation})
         } else {
             alert('Você deve selecionar um dia!');
         }
-        
-
-
-
     }
 
     if (showcreation===true) {
@@ -34,13 +30,13 @@ export default function HabitCreation({userinfo, showcreation, setShowcreation})
             <CreationForm onSubmit={handleForm}>
                 <input onChange={(event)=>setCreationinput({...creationinput, name: event.target.value})} value={creationinput.name} type='text' placeholder='nome do hábito' required />
                 <div>
-                    <CreationDaySelector day={7} creationinput={creationinput} setCreationinput={setCreationinput}>D</CreationDaySelector>
-                    <CreationDaySelector day={1} creationinput={creationinput} setCreationinput={setCreationinput}>S</CreationDaySelector>
-                    <CreationDaySelector day={2} creationinput={creationinput} setCreationinput={setCreationinput}>T</CreationDaySelector>
-                    <CreationDaySelector day={3} creationinput={creationinput} setCreationinput={setCreationinput}>Q</CreationDaySelector>
-                    <CreationDaySelector day={4} creationinput={creationinput} setCreationinput={setCreationinput}>Q</CreationDaySelector>
-                    <CreationDaySelector day={5} creationinput={creationinput} setCreationinput={setCreationinput}>S</CreationDaySelector>
-                    <CreationDaySelector day={6} creationinput={creationinput} setCreationinput={setCreationinput}>S</CreationDaySelector>
+                    <DaySelector type='create' day={7} creationinput={creationinput} setCreationinput={setCreationinput}>D</DaySelector>
+                    <DaySelector type='create' day={1} creationinput={creationinput} setCreationinput={setCreationinput}>S</DaySelector>
+                    <DaySelector type='create' day={2} creationinput={creationinput} setCreationinput={setCreationinput}>T</DaySelector>
+                    <DaySelector type='create' day={3} creationinput={creationinput} setCreationinput={setCreationinput}>Q</DaySelector>
+                    <DaySelector type='create' day={4} creationinput={creationinput} setCreationinput={setCreationinput}>Q</DaySelector>
+                    <DaySelector type='create' day={5} creationinput={creationinput} setCreationinput={setCreationinput}>S</DaySelector>
+                    <DaySelector type='create' day={6} creationinput={creationinput} setCreationinput={setCreationinput}>S</DaySelector>
                 </div>
                 <button onClick={()=>setShowcreation(!showcreation)} type='cancel'>Cancelar</button>
                 <button type='submit'>Salvar</button>

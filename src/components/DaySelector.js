@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-export default function CreationDaySelector({children, day, creationinput, setCreationinput}) {
+export default function DaySelector({children, day, creationinput, setCreationinput, type}) {
 
     const [selected, setSelected] = useState(false);
 
@@ -12,7 +12,9 @@ export default function CreationDaySelector({children, day, creationinput, setCr
     },[]);
 
     function selectDay() {
-        setSelected(!selected);
+        if(type==='create'){
+            setSelected(!selected);
+        }
         if(creationinput.days.includes(day)) {
             setCreationinput({...creationinput, days:creationinput.days.filter((item) => (item!==day))});
         } else {

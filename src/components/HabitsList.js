@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 
 import { getHabitsList, deleteHabit } from './../services/trackit';
 
+import HabitListItem from './HabitListItem.js';
+
 export default function HabitsList({userinfo, showcreation}) {
  
     const [habits, setHabits] = useState([]);
@@ -16,7 +18,7 @@ export default function HabitsList({userinfo, showcreation}) {
     if(habits.length>0) {
         return (
             <>
-                {habits.map((habit, index) => <p key={index}>{habit.name}</p>)}
+                {habits.map((habit, index) => <HabitListItem key={index} habit={habit} />)}
             </>
         );
     } else {
