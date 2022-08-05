@@ -17,7 +17,7 @@ export default function LogIn() {
         event.preventDefault();
         signIn(loginform).then((res) => {
             setUserinfo(res.data);
-            navigate('/habitos');
+            navigate('/hoje');
         })
         .catch((error)=>alert(`Falha no Login! ${error.response.data.message}`));
     }

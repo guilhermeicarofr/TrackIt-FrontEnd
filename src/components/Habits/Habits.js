@@ -24,7 +24,7 @@ export default function Habits() {
 
 const HabitsContainer = styled.main`
     margin-top: 70px;
-    padding: 80px 17px 0px 17px;
+    padding: 80px 17px 100px 17px;
     width: 100%;
     min-height: calc(100vh - 70px);
     background-color: #F2F2F2;
