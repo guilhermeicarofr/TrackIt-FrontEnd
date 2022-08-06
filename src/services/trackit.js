@@ -29,13 +29,14 @@ function getTodayHabitsList(user_token) {
     return promise;
 }
 function checkHabitToday(id, user_token) {
-    const promise = axios.post(`${BASE_URL}/habits/${id}/check`, {headers:{Authorization: `Bearer ${user_token}`}});
+    const promise = axios.post(`${BASE_URL}/habits/${id}/check`, {},{headers:{Authorization: `Bearer ${user_token}`}});
     return promise;
 }
 function uncheckHabitToday(id, user_token) {
-    const promise = axios.post(`${BASE_URL}/habits/${id}/uncheck`, {headers:{Authorization: `Bearer ${user_token}`}});
+    const promise = axios.post(`${BASE_URL}/habits/${id}/uncheck`, {},{headers:{Authorization: `Bearer ${user_token}`}});
     return promise;
 }
+
 function getHabitsHistory(user_token) {
     const promise = axios.get(`${BASE_URL}/habits/today`, {headers:{Authorization: `Bearer ${user_token}`}});
     return promise;

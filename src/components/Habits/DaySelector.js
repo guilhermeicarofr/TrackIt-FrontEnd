@@ -35,10 +35,9 @@ const DayContainer = styled.span`
     border: 1px solid #D4D4D4;
     border-radius: 5px;
     font-size: 20px;
-    ${props=>props.selected ? 'color: #FFFFFF;' : 'color: #DBDBDB;'}
-    ${props=>props.selected ? 'background-color: #CFCFCF;' : 'background-color: #FFFFFF;'}
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    ${props=>props.selected ? 'color: #FFFFFF; background-color: #CFCFCF;' : 'color: #DBDBDB; background-color: #FFFFFF;'}
 `;

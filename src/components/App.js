@@ -14,9 +14,10 @@ import Habits from './Habits/Habits';
 export default function App() {
 
   const [userinfo, setUserinfo] = useState({token: ''});
-  
+  const [loadtodaylist, setLoadtodaylist] = useState(false);
+
   return (
-    <UserContext.Provider value={{ userinfo, setUserinfo }}>
+    <UserContext.Provider value={{ userinfo, setUserinfo, loadtodaylist, setLoadtodaylist }}>
       <GlobalStyles />
       <BrowserRouter>
         <TopBar />

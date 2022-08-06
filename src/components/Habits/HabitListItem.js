@@ -30,7 +30,8 @@ export default function HabitListItem({habit, userinfo, loadlist, setLoadlist}) 
 
 const HabitListItemContainer = styled.div`
     width: 340px;
-    height: 91px;
+    min-height: 91px;
+    height: auto;
     background-color: #FFFFFF;
     border: 1px solid #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
@@ -44,6 +45,8 @@ const HabitListItemContainer = styled.div`
     text-align: justify;
     word-break: keep-all;
     position: relative;
+    text-align: justify;
+    word-break: break-all;
     div {
         width: 234px;
         height: 30px;
