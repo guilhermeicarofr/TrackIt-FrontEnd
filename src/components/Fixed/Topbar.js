@@ -2,9 +2,9 @@ import { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
-import UserContext from '../contexts/UserContext';
+import UserContext from '../../contexts/UserContext';
 
-import logo from '../assets/images/top-logo.png';
+import logo from '../../assets/images/top-logo.png';
 
 export default function TopBar() {
 

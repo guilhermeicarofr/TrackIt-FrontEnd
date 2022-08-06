@@ -4,8 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import UserContext from '../contexts/UserContext';
 import GlobalStyles from '../assets/globalstyles';
 
-import TopBar from './Topbar';
-import BottomBar from './BottomBar';
+import TopBar from './Fixed/Topbar';
+import BottomBar from './Fixed/BottomBar';
 import LogIn from './User/LogIn';
 import SignUp from './User/SignUp';
 import TodayList from './Today/TodayList';
@@ -15,10 +15,10 @@ import History from './History/History';
 export default function App() {
 
   const [userinfo, setUserinfo] = useState({token: ''});
-  const [loadtodaylist, setLoadtodaylist] = useState(false);
+  const [loadlist, setLoadlist] = useState(false);
 
   return (
-    <UserContext.Provider value={{ userinfo, setUserinfo, loadtodaylist, setLoadtodaylist }}>
+    <UserContext.Provider value={{ userinfo, setUserinfo, loadlist, setLoadlist }}>
       <GlobalStyles />
       <BrowserRouter>
         <TopBar />

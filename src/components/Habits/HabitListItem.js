@@ -16,13 +16,13 @@ export default function HabitListItem({habit, userinfo, loadlist, setLoadlist}) 
         <HabitListItemContainer>
             <h2>{habit.name}</h2>
             <div>
-                <DaySelector type='show' day={7} creationinput={habit} setCreationinput={()=>console.log('')}>D</DaySelector>
-                <DaySelector type='show' day={1} creationinput={habit} setCreationinput={()=>console.log('')}>S</DaySelector>
-                <DaySelector type='show' day={2} creationinput={habit} setCreationinput={()=>console.log('')}>T</DaySelector>
-                <DaySelector type='show' day={3} creationinput={habit} setCreationinput={()=>console.log('')}>Q</DaySelector>
-                <DaySelector type='show' day={4} creationinput={habit} setCreationinput={()=>console.log('')}>Q</DaySelector>
-                <DaySelector type='show' day={5} creationinput={habit} setCreationinput={()=>console.log('')}>S</DaySelector>
-                <DaySelector type='show' day={6} creationinput={habit} setCreationinput={()=>console.log('')}>S</DaySelector>
+                <DaySelector type='show' day={7} creationinput={habit} setCreationinput={''}>D</DaySelector>
+                <DaySelector type='show' day={1} creationinput={habit} setCreationinput={''}>S</DaySelector>
+                <DaySelector type='show' day={2} creationinput={habit} setCreationinput={''}>T</DaySelector>
+                <DaySelector type='show' day={3} creationinput={habit} setCreationinput={''}>Q</DaySelector>
+                <DaySelector type='show' day={4} creationinput={habit} setCreationinput={''}>Q</DaySelector>
+                <DaySelector type='show' day={5} creationinput={habit} setCreationinput={''}>S</DaySelector>
+                <DaySelector type='show' day={6} creationinput={habit} setCreationinput={''}>S</DaySelector>
             </div>
             <ion-icon onClick={removeItem} name='trash-outline'></ion-icon>
         </HabitListItemContainer>

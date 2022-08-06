@@ -23,12 +23,12 @@ export default function TodayList() {
         }
     }
 
-    const { userinfo, loadtodaylist, setLoadtodaylist } = useContext(UserContext);
+    const { userinfo, loadlist, setLoadlist } = useContext(UserContext);
     const [todaylist, setTodaylist] = useState([]);
 
     useEffect(()=>{
         getTodayHabitsList(userinfo.token).then((res)=>setTodaylist(res.data));
-    },[userinfo, loadtodaylist])
+    },[userinfo, loadlist])
 
     let progress = Math.round(100*((todaylist.filter((habit)=>habit.done).length) / todaylist.length));
 
@@ -38,7 +38,7 @@ export default function TodayList() {
                 {ptbrWeekday(dayjs().day())}, {(dayjs().date()).length>1 ? dayjs().date() : `0${dayjs().date()}`}/{(dayjs().month()).length>1 ? dayjs().month() : `0${dayjs().month()}`}
                 {(progress>0) ? (<p>{progress}% dos hábitos concluídos</p>) : <p>Nenhum hábito concluído ainda</p>}
             </h1>
-            {todaylist.map((habit, index)=><TodayHabit habit={habit} userinfo={userinfo} loadlist={loadtodaylist} setLoadlist={setLoadtodaylist} key={index}/>)}
+            {todaylist.map((habit, index)=><TodayHabit habit={habit} userinfo={userinfo} loadlist={loadlist} setLoadlist={setLoadlist} key={index}/>)}
         </TodayListContainer>
     );
 }

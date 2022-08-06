@@ -17,7 +17,7 @@ export default function TodayHabit({habit, userinfo, loadlist, setLoadlist}) {
             <h2>{habit.name}</h2>
             <p>Sequência atual: <strong>{habit.currentSequence} dias</strong></p>
             <p>Seu recorde: <strong>{habit.highestSequence} dias</strong></p>
-            <button onClick={checkHabit}><ion-icon name="checkmark-sharp"></ion-icon></button>
+            <button onClick={checkHabit}><ion-icon name='checkmark-sharp'></ion-icon></button>
         </TodayHabitContainer>
     );
 }

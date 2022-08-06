@@ -8,9 +8,8 @@ import HabitCreation from './HabitCreation';
 
 export default function Habits() {
 
-    const { userinfo } = useContext(UserContext);
+    const { userinfo, loadlist, setLoadlist } = useContext(UserContext);
     const [showcreation, setShowcreation] = useState(false);
-    const [loadlist, setLoadlist] = useState(true);
 
     return (
         <HabitsContainer>
