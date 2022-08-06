@@ -27,13 +27,7 @@ export default function HabitCreation({userinfo, showcreation, setShowcreation, 
             <CreationForm onSubmit={handleForm}>
                 <input onChange={(event)=>setCreationinput({...creationinput, name: event.target.value})} value={creationinput.name} type='text' placeholder='nome do hábito' required />
                 <div>
-                    <DaySelector type='create' day={7} creationinput={creationinput} setCreationinput={setCreationinput}>D</DaySelector>
-                    <DaySelector type='create' day={1} creationinput={creationinput} setCreationinput={setCreationinput}>S</DaySelector>
-                    <DaySelector type='create' day={2} creationinput={creationinput} setCreationinput={setCreationinput}>T</DaySelector>
-                    <DaySelector type='create' day={3} creationinput={creationinput} setCreationinput={setCreationinput}>Q</DaySelector>
-                    <DaySelector type='create' day={4} creationinput={creationinput} setCreationinput={setCreationinput}>Q</DaySelector>
-                    <DaySelector type='create' day={5} creationinput={creationinput} setCreationinput={setCreationinput}>S</DaySelector>
-                    <DaySelector type='create' day={6} creationinput={creationinput} setCreationinput={setCreationinput}>S</DaySelector>
+                    {[7,1,2,3,4,5,6].map((day, index) => <DaySelector type='create' day={day} creationinput={creationinput} setCreationinput={setCreationinput} key={index} />)}
                 </div>
                 <button onClick={()=>setShowcreation(!showcreation)} type='cancel'>Cancelar</button>
                 <button type='submit'>Salvar</button>

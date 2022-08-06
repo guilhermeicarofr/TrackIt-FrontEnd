@@ -20,6 +20,7 @@ export default function TodayList() {
             case 5: return 'Sexta';
             case 6: return 'Sábado';
             case 7: return 'Domingo';
+            default: return '';
         }
     }
 
