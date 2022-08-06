@@ -10,6 +10,7 @@ import LogIn from './User/LogIn';
 import SignUp from './User/SignUp';
 import TodayList from './Today/TodayList';
 import Habits from './Habits/Habits';
+import History from './History/History';
 
 export default function App() {
 
@@ -26,6 +27,7 @@ export default function App() {
           <Route path='/cadastro' element={<SignUp />} />
           <Route path='/hoje' element={<TodayList />}/>
           <Route path='/habitos' element={<Habits />}/>
+          <Route path='/historico' element={<History />}/>
         </Routes>
         <BottomBar />
       </BrowserRouter>
