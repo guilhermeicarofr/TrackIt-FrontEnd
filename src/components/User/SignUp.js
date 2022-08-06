@@ -8,7 +8,6 @@ import UserForm from './UserForm'
 export default function SignIn() {
 
     const [signupform, setSignupform] = useState({email:'', password:'', name: '', image: ''});
-
     const navigate = useNavigate();
 
     function handleForm(event) {

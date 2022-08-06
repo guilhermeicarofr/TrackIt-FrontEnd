@@ -1,14 +1,14 @@
 import { useContext } from 'react';
-import UserContext from '../contexts/UserContext';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+
+import UserContext from '../contexts/UserContext';
 
 import logo from '../assets/images/top-logo.png';
 
 export default function TopBar() {
 
     const { userinfo } = useContext(UserContext);
-
     let location = useLocation().pathname;
 
     if(location==='/' || location==='/cadastro') {

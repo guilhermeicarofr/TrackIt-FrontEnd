@@ -8,9 +8,8 @@ import UserForm from './UserForm'
 
 export default function LogIn() {
 
-    const [loginform, setLoginform] = useState({email:'', password:''});
     const { setUserinfo } = useContext(UserContext);
-
+    const [loginform, setLoginform] = useState({email:'', password:''});
     const navigate = useNavigate();
 
     function handleForm(event) {

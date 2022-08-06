@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
-import UserContext from '../../contexts/UserContext';
 import styled from 'styled-components';
+
+import UserContext from '../../contexts/UserContext';
 
 import HabitsList from './HabitsList.js'
 import HabitCreation from './HabitCreation';
@@ -8,7 +9,6 @@ import HabitCreation from './HabitCreation';
 export default function Habits() {
 
     const { userinfo } = useContext(UserContext);
-
     const [showcreation, setShowcreation] = useState(false);
     const [loadlist, setLoadlist] = useState(true);
 

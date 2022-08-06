@@ -1,16 +1,31 @@
 import { useState, useContext, useEffect } from 'react';
-import UserContext from '../../contexts/UserContext';
 import styled from 'styled-components';
 
+import UserContext from '../../contexts/UserContext';
 import { getTodayHabitsList } from '../../services/trackit';
 
 import TodayHabit from './TodayHabit';
 
 export default function TodayList() {
 
+    const dayjs = require('dayjs');
+    const utc = require('dayjs/plugin/utc')
+    dayjs.extend(utc);
+    function ptbrWeekday(num) {
+        switch(num) {
+            case 1: return 'Segunda';
+            case 2: return 'Terça';
+            case 3: return 'Quarta';
+            case 4: return 'Quinta';
+            case 5: return 'Sexta';
+            case 6: return 'Sábado';
+            case 7: return 'Domingo';
+        }
+    }
+
     const { userinfo, loadtodaylist, setLoadtodaylist } = useContext(UserContext);
     const [todaylist, setTodaylist] = useState([]);
-    
+
     useEffect(()=>{
         getTodayHabitsList(userinfo.token).then((res)=>setTodaylist(res.data));
     },[userinfo, loadtodaylist])
@@ -20,7 +35,7 @@ export default function TodayList() {
     return (
         <TodayListContainer progress={progress}>
             <h1>
-                Segunda, 17/05
+                {ptbrWeekday(dayjs().day())}, {(dayjs().date()).length>1 ? dayjs().date() : `0${dayjs().date()}`}/{(dayjs().month()).length>1 ? dayjs().month() : `0${dayjs().month()}`}
                 {(progress>0) ? (<p>{progress}% dos hábitos concluídos</p>) : <p>Nenhum hábito concluído ainda</p>}
             </h1>
             {todaylist.map((habit, index)=><TodayHabit habit={habit} userinfo={userinfo} loadlist={loadtodaylist} setLoadlist={setLoadtodaylist} key={index}/>)}
