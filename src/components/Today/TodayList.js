@@ -69,7 +69,7 @@ const TodayListContainer = styled.main`
         > p {
             margin-top: 3px;
             font-size: 18px;
-            ${props=>props.progress>0 ? 'color: green;' : 'color: #BABABA;'}
+            ${props=>props.progress>0 ? 'color: #8FC549;' : 'color: #BABABA;'}
         }
     }
 `;
