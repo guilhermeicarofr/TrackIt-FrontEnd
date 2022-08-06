@@ -13,7 +13,7 @@ export default function BottomBar() {
     const navigate = useNavigate();
     let location = useLocation().pathname;
 
-    const { userinfo, loadlist, setLoadlist } = useContext(UserContext);
+    const { userinfo, loadlist } = useContext(UserContext);
     const [todaylist, setTodaylist] = useState([]);
 
     useEffect(()=>{

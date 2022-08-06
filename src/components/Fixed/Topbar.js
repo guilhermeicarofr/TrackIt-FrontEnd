@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import UserContext from '../../contexts/UserContext';
@@ -8,8 +8,10 @@ import logo from '../../assets/images/top-logo.png';
 
 export default function TopBar() {
 
-    const { userinfo } = useContext(UserContext);
     let location = useLocation().pathname;
+    const navigate = useNavigate();
+
+    const { userinfo } = useContext(UserContext);
 
     if(location==='/' || location==='/cadastro') {
         return '';
@@ -17,7 +19,7 @@ export default function TopBar() {
         return (
             <TopBarContainer>
                 <img src={logo} alt='' />
-                <img src={userinfo.image} alt='' />
+                <img onClick={()=>navigate('/')} src={userinfo.image} alt='' />
             </TopBarContainer>
         );
     }
