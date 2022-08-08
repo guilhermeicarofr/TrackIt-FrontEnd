@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ThreeDots } from 'react-loader-spinner';
 import styled from 'styled-components';
 
 import { createNewHabit } from '../../services/trackit';
@@ -8,37 +9,69 @@ import DaySelector from './DaySelector';
 export default function HabitCreation({userinfo, showcreation, setShowcreation, loadlist, setLoadlist}) {
     
     const [creationinput, setCreationinput] = useState({name:'', days:[]})
+    const [waiting, setWaiting] = useState(false);
 
     function handleForm(event) {
         event.preventDefault();
+        setWaiting(true);
         if(creationinput.days.length>0) {
             createNewHabit(creationinput, userinfo.token).then(()=>{
                 setCreationinput({name:'', days:[]});
                 setLoadlist(!loadlist);
+                setWaiting(false);
                 setShowcreation(false);
             })
+            .catch((error)=>{
+                alert(error.data);
+                setWaiting(false);
+            });
         } else {
             alert('Você deve selecionar um dia!');
+            setWaiting(false);
         }
     }
 
     if (showcreation===true) {
-        return (
-            <CreationForm onSubmit={handleForm}>
-                <input onChange={(event)=>setCreationinput({...creationinput, name: event.target.value})} value={creationinput.name} type='text' placeholder='nome do hábito' required />
-                <div>
-                    {[7,1,2,3,4,5,6].map((day, index) => <DaySelector type='create' day={day} creationinput={creationinput} setCreationinput={setCreationinput} key={index} />)}
-                </div>
-                <button onClick={()=>setShowcreation(!showcreation)} type='cancel'>Cancelar</button>
-                <button type='submit'>Salvar</button>
-            </CreationForm>
-        );
+        if(!waiting) {
+            return (
+                <CreationForm onSubmit={handleForm} waiting={waiting}>
+                    <input onChange={(event)=>setCreationinput({...creationinput, name: event.target.value})} value={creationinput.name} type='text' placeholder='nome do hábito' required />
+                    <div>
+                        {[7,1,2,3,4,5,6].map((day, index) => <DaySelector type='create' day={day} creationinput={creationinput} setCreationinput={setCreationinput} key={index} />)}
+                    </div>
+                    <button onClick={()=>setShowcreation(!showcreation)} type='cancel'>Cancelar</button>
+                    <button type='submit'>Salvar</button>
+                </CreationForm>
+            );
+        } else {
+            return (
+                <CreationForm onSubmit={(event)=>event.preventDefault()} waiting={waiting}>
+                    <input value={creationinput.name} type='text' placeholder='nome do hábito' disabled required />
+                    <div>
+                        {[7,1,2,3,4,5,6].map((day, index) => <DaySelector type='show' day={day} creationinput={creationinput} setCreationinput={setCreationinput} key={index} />)}
+                    </div>
+                    <button type='cancel'>Cancelar</button>
+                    <button><ThreeDots
+                        height = "11"
+                        width = "43"
+                        radius = "9"
+                        color = '#FFFFFF'
+                        ariaLabel = 'three-dots-loading'     
+                        wrapperStyle
+                        wrapperClass
+                    /></button>
+                </CreationForm>
+            );
+        }
     } else {
         return '';  
     }   
 }
 
 const CreationForm = styled.form`
+    > * {
+        ${props=>props.waiting ? 'opacity: 70%;' : 'opacity: 100%;'}
+    }
     width: 340px;
     height: 180px;
     margin: 0px auto;
@@ -59,7 +92,7 @@ const CreationForm = styled.form`
         :focus {outline: 3px solid #52B6FF}
         ::placeholder {color: #DBDBDB}
     }
-    div {
+    > div {
         width: 234px;
         height: 30px;
         margin-top: 8px;
@@ -78,6 +111,9 @@ const CreationForm = styled.form`
         position: absolute;
         bottom: 16px;
         right: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     button:nth-of-type(1) {
         background-color: #FFFFFF;
